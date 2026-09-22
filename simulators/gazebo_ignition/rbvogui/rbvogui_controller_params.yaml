@@ -10,3 +10,5 @@
         type: joint_trajectory_controller/JointTrajectoryController
       velocity_controller:
         type: velocity_controllers/JointGroupVelocityController
+      forward_position_controller:
+        type: position_controllers/JointGroupPositionController
