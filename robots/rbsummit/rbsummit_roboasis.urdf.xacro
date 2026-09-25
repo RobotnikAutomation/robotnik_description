@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<robot
+  name="summit_xl"
+  xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:include
+    filename="$(find robotnik_description)/urdf/bases/rbsummit/rbsummit_base.xacro" />
+  <xacro:include
+    filename="$(find robotnik_sensors)/urdf/all_sensors.urdf.xacro" />
+
+  <!-- ARGUMENTS -->
+  <xacro:arg
+    name="namespace"
+    default="robot" />
+  <xacro:arg
+    name="prefix"
+    default="" />
+  <xacro:arg
+    name="gazebo_ignition"
+    default="false" />
+
+  <!-- RB-SUMMIT -->
+  <xacro:rbsummit
+    prefix="$(arg prefix)"
+    gazebo_ignition="$(arg gazebo_ignition)"
+    namespace="$(arg namespace)" />
+
+  <!-- IMU -->
+  <xacro:sensor_vectornav
+    frame_prefix="$(arg prefix)imu_"
+    parent="$(arg prefix)base_link"
+    node_namespace="$(arg namespace)"
+    gazebo_ignition="$(arg gazebo_ignition)">
+    <origin
+      xyz="0.0385 0.132 0.158"
+      rpy="0 0 0" />
+  </xacro:sensor_vectornav>
+
+  <!-- LASERS -->
+    <xacro:sensor_robosense_airy frame_prefix="$(arg prefix)top_3d_laser_" parent="$(arg prefix)base_link">
+        <origin xyz="0.28965 0.0 0.31162" rpy="3.1415927 -1.5707963 0"/>
+    </xacro:sensor_robosense_airy>
+
+  <!-- CAMERAS -->
+  <xacro:sensor_intel_realsense_d435
+    frame_prefix="$(arg prefix)front_rgbd_camera_"
+    parent="$(arg prefix)base_link"
+    node_namespace="$(arg namespace)"
+    node_name="front_camera"
+    gazebo_ignition="$(arg gazebo_ignition)">
+    <origin
+      xyz="0.324 0.012 0.172"
+      rpy="0 0 0" />
+  </xacro:sensor_intel_realsense_d435>
+
+  <!-- GPS -->
+  <xacro:sensor_ublox_with_mast
+    frame_prefix="$(arg prefix)gps_"
+    parent="$(arg prefix)base_link"
+    node_namespace="$(arg namespace)"
+    node_name="gps"
+    gazebo_ignition="$(arg gazebo_ignition)">
+    <origin
+      xyz="-0.22528 0.095 0.48"
+      rpy="0 0 0" />
+  </xacro:sensor_ublox_with_mast>
+</robot>
