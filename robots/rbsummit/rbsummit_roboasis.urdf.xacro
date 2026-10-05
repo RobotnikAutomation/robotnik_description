@@ -37,7 +37,7 @@
 
   <!-- LASERS -->
     <xacro:sensor_robosense_airy frame_prefix="$(arg prefix)top_3d_laser_" parent="$(arg prefix)base_link">
-        <origin xyz="0.28965 0.0 0.31162" rpy="3.1415927 -1.5707963 0"/>
+        <origin xyz="0.23965 0.0 0.31162" rpy="3.1415927 -1.5707963 0"/>
     </xacro:sensor_robosense_airy>
 
   <!-- CAMERAS -->
