@@ -63,8 +63,8 @@
               filename="package://robotnik_description/meshes/bases/rbtheron/theron_base_v4.stl" />
           </geometry>
         </xacro:unless>
-        <material name="grey">
-          <color rgba="0.2 0.2 0.2 1" />
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 1" />
         </material>
       </visual>
       <collision>
@@ -77,10 +77,6 @@
         </geometry>
       </collision>
     </link>
-
-    <gazebo reference="${prefix}base_link">
-      <material>Gazebo/Black</material>
-    </gazebo>
 
     <!-- LOGO ROBOTNIK IZQUIERDO -->
     <link name="${prefix}base_logo_left">
@@ -192,7 +188,7 @@
       name="${prefix}base_docking_joint"
       type="fixed">
       <origin
-        xyz="0.35 0 0.09"
+        xyz="0.32 0 0.09"
         rpy="0 0 0" />
       <parent link="${prefix}base_link" />
       <child link="${prefix}base_docking_contact" />
