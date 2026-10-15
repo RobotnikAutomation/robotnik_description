@@ -13,7 +13,7 @@
         filename="gz_ros2_control-system">
         <robot_param>robot_description</robot_param>
         <robot_param_node>robot_state_publisher</robot_param_node>
-        <parameters>$(find robotnik_simulation_profiles)/rbfiqus/control/${controller_config}</parameters>
+        <parameters>$(find robotnik_simulation_robots)/rbfiqus/control/${controller_config}</parameters>
         <ros>
           <namespace>/${namespace}</namespace>
         </ros>
