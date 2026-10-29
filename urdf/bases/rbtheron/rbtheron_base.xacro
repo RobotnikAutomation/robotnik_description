@@ -5,7 +5,7 @@
   <xacro:include
     filename="$(find robotnik_description)/urdf/bodies/rbtheron/rbtheron_body.urdf.xacro" />
   <xacro:include
-    filename="$(find robotnik_description)/urdf/wheels/rubber_wheel/rubber_wheel_150.urdf.xacro" />
+    filename="$(find robotnik_description)/urdf/wheels/rubber_wheel/rubber_wheel_zltech.urdf.xacro" />
   <xacro:include
     filename="$(find robotnik_description)/urdf/wheels/caster_wheel/rbtheron_caster.urdf.xacro" />
   <xacro:include
@@ -28,9 +28,12 @@
   <xacro:property
     name="castor_offset_y"
     value="0.1825" />
+  <!-- base_link sits at wheel_radius above the ground: the casters hang 0.0448 from it
+       with the 0.0762 wheel and must be raised by the same amount the wheel shrinks so
+       they keep touching the ground. -->
   <xacro:property
     name="castor_offset_z"
-    value="0.0448" />
+    value="${0.0448 + (0.0762 - wheel_radius)}" />
 
   <xacro:macro
     name="rbtheron"
