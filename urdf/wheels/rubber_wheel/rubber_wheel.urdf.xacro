@@ -10,7 +10,7 @@
   </xacro:macro>
 
   <xacro:macro name="rubber_wheel" params="prefix parent *origin reflect hq rubber_wheel_radius:=0.11 rubber_wheel_width:=0.15 rubber_wheel_mass:=6.5
-                                          mesh_file:=robot_description/meshes/wheels/rubber_wheel/rubber_wheel_right">
+                                          mesh_file:=robot_description/meshes/wheels/rubber_wheel/rubber_wheel_right use_cylinder:=false">
 
 <!--WHEEL TIRE -->
     <joint name="${prefix}_wheel_joint" type="continuous">
@@ -24,28 +24,43 @@
 
     <link name="${prefix}_wheel">
       <visual>
-        <!-- HIGH RESOLUTION WHEELS -->
-        <xacro:if value="${hq}">
-          <xacro:unless value="${reflect}">
-            <origin xyz="0 0 0" rpy="0 0 0" />
-          </xacro:unless>
-          <xacro:if value="${reflect}">
-            <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
-          </xacro:if>
-          <geometry>
-							<mesh filename="package://${mesh_file}.dae" />	
-          </geometry>
-        </xacro:if>
-       <!-- LOW RESOLUTION WHEELS -->
-        <xacro:unless value="${hq}">
+        <xacro:if value="${use_cylinder}">
           <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
           <geometry>
             <cylinder length="${rubber_wheel_width}" radius="${rubber_wheel_radius}" />
           </geometry>
+        </xacro:if>
+        <xacro:unless value="${use_cylinder}">
+          <!-- HIGH RESOLUTION WHEELS -->
+          <xacro:if value="${hq}">
+            <xacro:unless value="${reflect}">
+              <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:unless>
+            <xacro:if value="${reflect}">
+              <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
+            </xacro:if>
+            <geometry>
+              <mesh filename="package://${mesh_file}.dae" />
+            </geometry>
+          </xacro:if>
+          <!-- LOW RESOLUTION WHEELS -->
+          <xacro:unless value="${hq}">
+            <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+            <geometry>
+              <cylinder length="${rubber_wheel_width}" radius="${rubber_wheel_radius}" />
+            </geometry>
+          </xacro:unless>
         </xacro:unless>
       </visual>
 
       <collision>
+        <xacro:if value="${use_cylinder}">
+          <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+          <geometry>
+            <cylinder length="${rubber_wheel_width}" radius="${rubber_wheel_radius}" />
+          </geometry>
+        </xacro:if>
+        <xacro:unless value="${use_cylinder}">
           <xacro:unless value="${reflect}">
             <origin xyz="0 0 0" rpy="0 0 0" />
           </xacro:unless>
@@ -53,8 +68,9 @@
             <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
           </xacro:if>        
           <geometry>
-						<mesh filename="package://${mesh_file}.stl" />
-        </geometry>
+            <mesh filename="package://${mesh_file}.stl" />
+          </geometry>
+        </xacro:unless>
       </collision>
       <inertial>
         <mass value="${rubber_wheel_mass}" />
