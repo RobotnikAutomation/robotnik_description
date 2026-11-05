@@ -40,9 +40,9 @@
 
     <xacro:macro name="rbwatcher_xl" params="prefix publish_bf hq kinematics:=skid">
 		<xacro:property name="top_structure_mesh" value="robot_description/meshes/structures/rbwatcher_xl/rbwatcher_xl_top_structure" />
-		<xacro:property name="top_structure_x" value="-0.32363"/>
+		<xacro:property name="top_structure_x" value="-0.26135"/>
 		<xacro:property name="top_structure_y" value="0"/>
-		<xacro:property name="top_structure_z" value="0.26135"/>
+		<xacro:property name="top_structure_z" value="0.32363"/>
 		<xacro:property name="PI" value="3.1415926535897931"/>
 
 
@@ -61,7 +61,7 @@
 
     	<!-- IMU -->
     	<xacro:sensor_imu prefix="${prefix}imu" parent="${prefix}base_link" topic="imu/data">
-    	  	<origin xyz="-0.03534 0.132 0.16109" rpy="0 0 0"/>
+    	  	<origin xyz="0.0 0.0 0.1366" rpy="0 0 0"/>
     	</xacro:sensor_imu>
     	
     	<!-- RGBD -->
@@ -84,14 +84,9 @@
 			<origin xyz="-0.200 0.0 0.32613" rpy="0 0 0"/>
 		</xacro:sensor_antena_std>
 
-		<!-- Axis 360 camera ring -->
-		<xacro:sensor_axis_360_camera_ring prefix="${prefix}top_camera_ring" parent="${prefix}base_link" prefix_topic="top_camera_ring">
-			<origin xyz="-0.05575 0 0.65963" rpy="0 0 0"/>
-		</xacro:sensor_axis_360_camera_ring>
-
 		<!-- PTZ camera -->
 		<xacro:sensor_link_750_nh prefix="${prefix}top_ptz_camera" prefix_topic="top_ptz_camera" parent="${prefix}base_link" fps="15.0">
-			<origin xyz="-0.05575 0 0.73813" rpy="0 0 0"/>
+			<origin xyz="-0.05575 0 0.64763" rpy="0 0 0"/>
 		</xacro:sensor_link_750_nh>
 
 		<!-- Gazebo ros control pluggins -->
@@ -105,7 +100,7 @@
 
    </xacro:macro>
 
-   <xacro:rbwatcher prefix="$(arg prefix)" publish_bf="true" hq="true" kinematics="$(arg kinematics)"/>
+   <xacro:rbwatcher_xl prefix="$(arg prefix)" publish_bf="true" hq="true" kinematics="$(arg kinematics)"/>
 
 
 </robot>

@@ -10,8 +10,8 @@
 		<!-- Robot mechanical and motor parameters -->
 		<xacro:property name="PI" value="3.1415926535897931"/>
 		<!-- Wheel parameters -->
-		<xacro:property name="wheel_offset_x" value="0.28136" />    <!-- x,y,z in translation from base_link to the center of the wheel -->
-		<xacro:property name="wheel_offset_y" value="0.210" />
+		<xacro:property name="wheel_offset_x" value="0.275" />    <!-- x,y,z in translation from base_link to the center of the wheel -->
+		<xacro:property name="wheel_offset_y" value="0.275" />
 		<xacro:property name="wheel_offset_z" value="0.0" />
 		<xacro:property name="docking_contact_offset_x" value="0.337" />
 		<xacro:property name="docking_contact_offset_y" value="0.0" />
