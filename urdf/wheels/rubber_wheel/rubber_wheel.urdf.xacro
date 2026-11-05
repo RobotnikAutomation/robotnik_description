@@ -29,6 +29,9 @@
           <geometry>
             <cylinder length="${rubber_wheel_width}" radius="${rubber_wheel_radius}" />
           </geometry>
+          <material name="black">
+            <color rgba="0.0 0.0 0.0 1"/>
+          </material>
         </xacro:if>
         <xacro:unless value="${use_cylinder}">
           <!-- HIGH RESOLUTION WHEELS -->

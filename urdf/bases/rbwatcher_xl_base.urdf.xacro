@@ -21,20 +21,20 @@
 		<xacro:property name="rubber_wheel_mass" value="12" />
 		<!-- BASE FOOTPRINT -->
 		<xacro:if value="${publish_bf}">
-		<link name="${prefix}base_footprint">
-			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
-					<box size="0.001 0.001 0.001" />
-				</geometry>
-			</visual>
-		</link>
+			<link name="${prefix}base_footprint">
+				<visual>
+					<origin xyz="0 0 0" rpy="0 0 0" />
+					<geometry>
+						<box size="0.001 0.001 0.001" />
+					</geometry>
+				</visual>
+			</link>
 
-		<joint name="${prefix}base_footprint_joint" type="fixed">
-			<origin xyz="0 0 ${rubber_wheel_radius}" rpy="0 0 0" /> <!-- ${wheel_radius} property must be defined inside wheel description -->
-			<parent link="${prefix}base_footprint"/>
-			<child link="${prefix}base_link" />
-		</joint>
+			<joint name="${prefix}base_footprint_joint" type="fixed">
+				<origin xyz="0 0 ${rubber_wheel_radius}" rpy="0 0 0" /> <!-- ${wheel_radius} property must be defined inside wheel description -->
+				<parent link="${prefix}base_footprint"/>
+				<child link="${prefix}base_link" />
+			</joint>
 		</xacro:if>
 
 		<!-- BASE_LINK -->
@@ -47,14 +47,14 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<xacro:if value="${hq}">
-			<geometry>
-				<mesh filename="package://robot_description/meshes/bases/rbwatcher_xl_body.dae"/>
-			</geometry>
+				<geometry>
+					<mesh filename="package://robot_description/meshes/bases/rbwatcher_xl_body.dae"/>
+				</geometry>
 			</xacro:if>
 			<xacro:unless value="${hq}">
-			<geometry>
-				<mesh filename="package://robot_description/meshes/bases/rbwatcher_xl_body.dae"/>
-			</geometry>
+				<geometry>
+					<mesh filename="package://robot_description/meshes/bases/rbwatcher_xl_body.dae"/>
+				</geometry>
 			</xacro:unless>
 			<material name="darkgrey">
 				<color rgba="0.1 0.1 0.1 1"/>
