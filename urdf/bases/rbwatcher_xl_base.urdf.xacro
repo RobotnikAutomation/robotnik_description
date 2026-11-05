@@ -13,9 +13,9 @@
 		<xacro:property name="wheel_offset_x" value="0.275" />    <!-- x,y,z in translation from base_link to the center of the wheel -->
 		<xacro:property name="wheel_offset_y" value="0.275" />
 		<xacro:property name="wheel_offset_z" value="0.0" />
-		<xacro:property name="docking_contact_offset_x" value="0.337" />
+		<xacro:property name="docking_contact_offset_x" value="0.34" />
 		<xacro:property name="docking_contact_offset_y" value="0.0" />
-		<xacro:property name="docking_contact_offset_z" value="0.03803" />
+		<xacro:property name="docking_contact_offset_z" value="-0.08" />
 		<xacro:property name="rubber_wheel_radius" value="0.165" />
 		<xacro:property name="rubber_wheel_width" value="0.125" />
 		<xacro:property name="rubber_wheel_mass" value="12" />
@@ -36,6 +36,14 @@
 				<child link="${prefix}base_link" />
 			</joint>
 		</xacro:if>
+
+		<link name="${prefix}chassis_link" />
+
+		<joint name="${prefix}chassis_joint" type="fixed">
+			<origin xyz="0 0 0.14738" rpy="0 0 0" />
+			<parent link="${prefix}base_link"/>
+			<child link="${prefix}chassis_link" />
+		</joint>
 
 		<!-- BASE_LINK -->
 		<link name="${prefix}base_link">
@@ -75,7 +83,7 @@
 		<!-- DOCKING CONTACTS -->
 		<joint name="${prefix}base_docking_joint" type="fixed">
 			<origin xyz="${docking_contact_offset_x} ${docking_contact_offset_y} ${docking_contact_offset_z}" rpy="0 0 0 " />
-			<parent link="${prefix}base_link"/>
+			<parent link="${prefix}chassis_link"/>
 			<child link="${prefix}base_docking_contact_link" />
 		</joint>
 
