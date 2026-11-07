@@ -100,12 +100,12 @@
           xyz="0 0 ${-wheel_offset_z}"
           rpy="0 0 0" />
         <inertia
-          ixx="0.00007"
+          ixx="0.001159"
           ixy="0.0"
           ixz="0.0"
-          iyy="0.00007"
+          iyy="0.000169"
           iyz="0.0"
-          izz="0.0078" />
+          izz="0.001027" />
       </inertial>
       <visual>
         <origin
