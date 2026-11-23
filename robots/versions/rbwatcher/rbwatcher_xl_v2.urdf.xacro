@@ -66,7 +66,7 @@
     	
     	<!-- RGBD -->
     	<xacro:sensor_intel_d435 prefix="${prefix}front_rgbd_camera" parent="${prefix}chassis_link" prefix_topic="front_rgbd_camera">
-			<origin xyz="0.29995 0.0 0.05523" rpy="0 0 0"/>
+			<origin xyz="0.29995 0.0 0.06598" rpy="0 0 0"/>
     	</xacro:sensor_intel_d435>
 
         <!-- GPS -->
@@ -76,7 +76,7 @@
 
     	<!-- LIDAR -->
     	<xacro:sensor_rs_helios_16p prefix="${prefix}top_3d_laser" prefix_topic="top_3d_laser" parent="${prefix}chassis_link" gpu="$(arg gpu)" suffix_topic="_raw">
-    	  	<origin xyz="0.0 0.0 0.28425" rpy="0 0 0"/>
+    	  	<origin xyz="0.0 0.0 0.295" rpy="0 0 0"/>
     	</xacro:sensor_rs_helios_16p>
 
 		<!-- Antenna -->
